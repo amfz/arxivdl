@@ -4,7 +4,7 @@
 \alias{download_pdf}
 \title{Download PDFs}
 \usage{
-download_pdf(data, link_col = "link_pdf", directory = ".")
+download_pdf(data, link_col = "link_pdf", directory = ".", bucket = NULL)
 }
 \arguments{
 \item{data}{data frame of arXiv records}
@@ -12,17 +12,25 @@ download_pdf(data, link_col = "link_pdf", directory = ".")
 \item{link_col}{name of column containing the PDF locations. \code{link_pdf} by default.}
 
 \item{directory}{directory to download files to. Current working directory by default.}
+
+\item{bucket}{name of AWS S3 bucket to save files to.}
 }
 \value{
 None
 }
 \description{
-Takes the results of an arxiv API query and downloads papers to disk.
+Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials must be set as environment variables prior to using \code{download_pdf} (see example).
 Papers are saved with their arXiv id, e.g. "2001.12345v1.pdf"
 }
 \examples{
-# get records of papers, then download them
-# ml <- get_records("cs.LG", "20200801 TO 20200802", 100)
+# get paper metadata, then download it to working directory
+# ml <- get_records("cs.LG", "20200801 TO 20200802", 1)
 # download_pdf(ml)
+
+# set up S3 credentials, then download to bucket
+# Sys.setenv("AWS_ACCESS_KEY_ID" = "key")
+# Sys.setenv("AWS_SECRET_ACCESS_KEY" = "secretkey")
+# Sys.setenv("AWS_DEFAULT_REGION" = "us-east-2")
+# download_pdf(ml, bucket="mybucket")
 
 }

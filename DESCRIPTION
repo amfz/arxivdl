@@ -21,4 +21,5 @@ Language: en-CA
 Imports: 
     aRxiv,
     magrittr,
-    utils
+    utils,
+    aws.s3

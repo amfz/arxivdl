@@ -8,7 +8,7 @@
 #' @param directory directory to download files to. Current working directory by default.
 #' @param bucket name of AWS S3 bucket to save files to.
 #'
-#' @return None
+#' @return None -- files are saved to the specified location
 #'
 #' @examples
 #' # get paper metadata, then download it to working directory

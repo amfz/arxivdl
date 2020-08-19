@@ -4,12 +4,20 @@
 \alias{download_pdf}
 \title{Download PDFs}
 \usage{
-download_pdf(data, link_col = "link_pdf", directory = ".", bucket = NULL)
+download_pdf(
+  data,
+  links = "link_pdf",
+  fnames = "id",
+  directory = ".",
+  bucket = NULL
+)
 }
 \arguments{
-\item{data}{data frame of arXiv records}
+\item{data}{data frame of arXiv records.}
 
-\item{link_col}{name of column containing the PDF locations. \code{link_pdf} by default.}
+\item{links}{name of column containing the PDF locations. \code{link_pdf} by default.}
+
+\item{fnames}{name of column whose values should be used for saved file names. \code{id} by default.}
 
 \item{directory}{directory to download files to. Current working directory by default.}
 

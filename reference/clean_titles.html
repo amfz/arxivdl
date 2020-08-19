@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Download PDFs — download_pdf • dlarxiv</title>
+<title>Clean Title Names — clean_titles • dlarxiv</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Download PDFs — download_pdf" />
-<meta property="og:description" content="Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials must be set as environment variables prior to using download_pdf (see example).
-Papers are saved with their arXiv id, e.g. &quot;2001.12345v1.pdf&quot;" />
+<meta property="og:title" content="Clean Title Names — clean_titles" />
+<meta property="og:description" content="Standardize a text vector" />
 
 
 
@@ -109,23 +108,16 @@ Papers are saved with their arXiv id, e.g. &quot;2001.12345v1.pdf&quot;" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Download PDFs</h1>
-    <small class="dont-index">Source: <a href='https://github.com/amfz/dlarxiv/blob/master/R/download_pdf.R'><code>R/download_pdf.R</code></a></small>
-    <div class="hidden name"><code>download_pdf.Rd</code></div>
+    <h1>Clean Title Names</h1>
+    <small class="dont-index">Source: <a href='https://github.com/amfz/dlarxiv/blob/master/R/utility_functions.R'><code>R/utility_functions.R</code></a></small>
+    <div class="hidden name"><code>clean_titles.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials must be set as environment variables prior to using <code>download_pdf</code> (see example).
-Papers are saved with their arXiv id, e.g. "2001.12345v1.pdf"</p>
+    <p>Standardize a text vector</p>
     </div>
 
-    <pre class="usage"><span class='fu'>download_pdf</span>(
-  <span class='no'>data</span>,
-  <span class='kw'>links</span> <span class='kw'>=</span> <span class='st'>"link_pdf"</span>,
-  <span class='kw'>fnames</span> <span class='kw'>=</span> <span class='st'>"id"</span>,
-  <span class='kw'>directory</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>bucket</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>clean_titles</span>(<span class='no'>data</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"title"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,37 +127,18 @@ Papers are saved with their arXiv id, e.g. "2001.12345v1.pdf"</p>
       <td><p>data frame of arXiv records.</p></td>
     </tr>
     <tr>
-      <th>links</th>
-      <td><p>name of column containing the PDF locations. <code>link_pdf</code> by default.</p></td>
-    </tr>
-    <tr>
-      <th>fnames</th>
-      <td><p>name of column whose values should be used for saved file names. <code>id</code> by default.</p></td>
-    </tr>
-    <tr>
-      <th>directory</th>
-      <td><p>directory to download files to. Current working directory by default.</p></td>
-    </tr>
-    <tr>
-      <th>bucket</th>
-      <td><p>name of AWS S3 bucket to save files to.</p></td>
+      <th>col</th>
+      <td><p>text column in the data frame to clean up</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>None -- files are saved to the specified location</p>
+    <p>Character vector of cleaned text.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># get paper metadata, then download it to working directory
-# ml &lt;- get_records("cs.LG", "20200801 TO 20200802", 1)
-# download_pdf(ml)
+    <pre class="examples"><div class='input'>
 
-# set up S3 credentials, then download to bucket
-# Sys.setenv("AWS_ACCESS_KEY_ID" = "key")
-# Sys.setenv("AWS_SECRET_ACCESS_KEY" = "secretkey")
-# Sys.setenv("AWS_DEFAULT_REGION" = "us-east-2")
-# download_pdf(ml, bucket="mybucket")
 
 </div></pre>
   </div>

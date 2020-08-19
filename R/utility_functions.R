@@ -8,7 +8,8 @@
 #' @return Character vector of cleaned text.
 #'
 #' @examples
-#'
+#' df <- data.frame(title = c("Paper Title: Subtitle", "O Rly? A Study"), pages = c(20, 40))
+#' df$cleaned <- clean_titles(df)
 #'
 #'
 #' @export

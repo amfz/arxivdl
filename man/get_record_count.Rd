@@ -19,6 +19,6 @@ Queries the arXiv API to get the count of papers submitted to a given category d
 }
 \examples{
 # Get the count of papers submitted to cs.LG on August 1, 2020
-ml <- get_record_count("cs.LG", "20200801 TO 20200802")
+ml_count <- get_record_count("cs.LG", "20200801 TO 20200802")
 
 }

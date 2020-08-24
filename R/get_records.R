@@ -2,7 +2,7 @@
 #'
 #' Queries the arXiv API to get metadata for papers submitted to a given category during a stated date range. Records are ordered by earliest submitted.
 #'
-#' @param cat [arXiv category](https://arxiv.org/category_taxonomy) name(s). Search for multiple categories by using the pipe ("|") delimiter
+#' @param cat [arXiv category](https://arxiv.org/category_taxonomy) name(s) to retrieve papersfor. Search for papers listed under multiple categories by using the pipe ("|") delimiter.
 #' @param date_range Submission dates in "YYYYMMDD TO YYYYMMDD" format
 #' @param lim Total number of records to retrieve. If no value is given, the function will check how many records the query will return and prompt the user to proceed.
 #'
@@ -12,7 +12,7 @@
 #' # Get the count of papers submitted to cs.LG on August 1, 2020
 #' # ml <- get_records("cs.LG", "20200801 TO 20200802")
 #'
-#' # Get the first 20 papers submitted to both math.CO and math.PR in 2019
+#' # Get the first 20 papers submitted to *both* math.CO and math.PR in 2019
 #' # papers <- get_records("math.CO | math.PR", "2019 TO 2020", 20)
 #'
 #' @export

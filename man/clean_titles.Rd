@@ -7,7 +7,7 @@
 clean_titles(data, col = "title")
 }
 \arguments{
-\item{data}{data frame of arXiv records.}
+\item{data}{data frame}
 
 \item{col}{text column in the data frame to clean up}
 }
@@ -15,7 +15,7 @@ clean_titles(data, col = "title")
 Character vector of cleaned text.
 }
 \description{
-Standardize a text vector
+Clean up text for use as file names. Converts all characters to lowercase, removes  puncuation and extra whitespace, replaces spaces between words with underscores, and adds ".pdf" to the end of the title.
 }
 \examples{
 df <- data.frame(title = c("Paper Title: Subtitle", "O Rly? A Study"), pages = c(20, 40))

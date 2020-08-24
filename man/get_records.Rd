@@ -7,7 +7,7 @@
 get_records(cat, date_range, lim = NULL)
 }
 \arguments{
-\item{cat}{\href{https://arxiv.org/category_taxonomy}{arXiv category} name(s). Search for multiple categories by using the pipe ("|") delimiter}
+\item{cat}{\href{https://arxiv.org/category_taxonomy}{arXiv category} name(s) to retrieve papersfor. Search for papers listed under multiple categories by using the pipe ("|") delimiter.}
 
 \item{date_range}{Submission dates in "YYYYMMDD TO YYYYMMDD" format}
 
@@ -23,7 +23,7 @@ Queries the arXiv API to get metadata for papers submitted to a given category d
 # Get the count of papers submitted to cs.LG on August 1, 2020
 # ml <- get_records("cs.LG", "20200801 TO 20200802")
 
-# Get the first 20 papers submitted to both math.CO and math.PR in 2019
+# Get the first 20 papers submitted to *both* math.CO and math.PR in 2019
 # papers <- get_records("math.CO | math.PR", "2019 TO 2020", 20)
 
 }

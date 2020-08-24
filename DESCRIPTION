@@ -1,13 +1,18 @@
 Package: dlarxiv
-Title: Download Papers
+Title: Download ArXiv Papers Responsibly
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "A",
+    c(person(given = "A",
            family = "Mahfouz",
            role = c("aut", "cre"),
-           email = "a.mahfouz@mail.utoronto.ca",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "a.mahfouz@mail.utoronto.ca"),
+      person(given = "Rohan",
+           family = "Alexander",
+           role = c("aut"),
+           email = "rohan.alexander@utoronto.ca"))
+Description: This package makes it easier to download paper PDFs 
+    from arXiv by providing functions to retrieve paper metadata
+    and to download and save papers to disk or AWS S3 bucket storage.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

@@ -15,7 +15,7 @@ clean_titles(data, col = "title")
 Character vector of cleaned text.
 }
 \description{
-Clean up text for use as file names. Converts all characters to lowercase, removes  puncuation and extra whitespace, replaces spaces between words with underscores, and adds ".pdf" to the end of the title.
+Clean up text for use as file names. Converts all characters to lowercase, removes  punctuation and extra whitespace, replaces spaces between words with underscores, and adds ".pdf" to the end of the title.
 }
 \examples{
 df <- data.frame(title = c("Paper Title: Subtitle", "O Rly? A Study"), pages = c(20, 40))

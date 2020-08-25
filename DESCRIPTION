@@ -21,10 +21,14 @@ RoxygenNote: 7.1.1
 URL: https://github.com/amfz/dlarxiv
 BugReports: https://github.com/amfz/dlarxiv/issues
 Suggests: 
-    spelling
+    spelling,
+    knitr,
+    rmarkdown,
+    qpdf
 Language: en-US
 Imports: 
     aRxiv,
     magrittr,
     utils,
     aws.s3
+VignetteBuilder: knitr

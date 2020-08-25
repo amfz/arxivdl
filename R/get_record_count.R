@@ -13,7 +13,7 @@
 #'
 #' @export
 get_record_count <- function(cat, date_range) {
-  query <- paste0('cat:"', cat, '" AND submittedDate:[', date_range, "]")
+  query <- paste0('cat:', cat, ' AND submittedDate:[', date_range, ']')
   count <- aRxiv::arxiv_count(query)
   return(count)
 }

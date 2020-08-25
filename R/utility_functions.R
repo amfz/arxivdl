@@ -1,6 +1,6 @@
 #' Clean Title Names
 #'
-#' Clean up text for use as file names. Converts all characters to lowercase, removes  puncuation and extra whitespace, replaces spaces between words with underscores, and adds ".pdf" to the end of the title.
+#' Clean up text for use as file names. Converts all characters to lowercase, removes  punctuation and extra whitespace, replaces spaces between words with underscores, and adds ".pdf" to the end of the title.
 #'
 #' @param data data frame
 #' @param col text column in the data frame to clean up

@@ -7,23 +7,20 @@
 get_records(cat, date_range, lim = NULL)
 }
 \arguments{
-\item{cat}{\href{https://arxiv.org/category_taxonomy}{arXiv category} name(s) to retrieve papersfor. Search for papers listed under multiple categories by using the pipe ("|") delimiter.}
+\item{cat}{\href{https://arxiv.org/category_taxonomy}{arXiv category} name(s) to retrieve papers for. Search for papers listed under multiple categories by using the pipe ("|") delimiter.}
 
 \item{date_range}{Submission dates in "YYYYMMDD TO YYYYMMDD" format}
 
-\item{lim}{Total number of records to retrieve. If no value is given, the function will check how many records the query will return and prompt the user to proceed.}
+\item{lim}{Total number of records to retrieve. If the function is called interactively and no lim value is given, the function will check how many records the query will return and prompt the user to proceed.}
 }
 \value{
 \code{data.frame} of metadata
 }
 \description{
-Queries the arXiv API to get metadata for papers submitted to a given category during a stated date range. Records are ordered by earliest submitted.
+Queries the arXiv API to get metadata for papers submitted to a given category during a specified date range. Records are ordered by earliest submitted.
 }
 \examples{
-# Get the count of papers submitted to cs.LG on August 1, 2020
-# ml <- get_records("cs.LG", "20200801 TO 20200802")
-
-# Get the first 20 papers submitted to *both* math.CO and math.PR in 2019
-# papers <- get_records("math.CO | math.PR", "2019 TO 2020", 20)
+# Get the first 10 papers submitted to *both* math.CO and math.PR in 2019
+# papers <- get_records("math.CO | math.PR", "2019 TO 2020", 10)
 
 }

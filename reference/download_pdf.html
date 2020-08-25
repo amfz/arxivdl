@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="Download PDFs — download_pdf" />
-<meta property="og:description" content="Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials must be set as environment variables prior to using download_pdf (see example).
-Papers are saved with their arXiv id, e.g. &quot;2001.12345v1.pdf&quot;" />
+<meta property="og:description" content="Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials should be set as environment variables prior to using download_pdf (see example).
+Papers are saved with their arXiv id by default, e.g. &quot;2001.12345v1.pdf&quot;" />
 
 
 
@@ -115,17 +115,11 @@ Papers are saved with their arXiv id, e.g. &quot;2001.12345v1.pdf&quot;" />
     </div>
 
     <div class="ref-description">
-    <p>Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials must be set as environment variables prior to using <code>download_pdf</code> (see example).
-Papers are saved with their arXiv id, e.g. "2001.12345v1.pdf"</p>
+    <p>Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials should be set as environment variables prior to using <code>download_pdf</code> (see example).
+Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf"</p>
     </div>
 
-    <pre class="usage"><span class='fu'>download_pdf</span>(
-  <span class='no'>data</span>,
-  <span class='kw'>links</span> <span class='kw'>=</span> <span class='st'>"link_pdf"</span>,
-  <span class='kw'>fnames</span> <span class='kw'>=</span> <span class='st'>"id"</span>,
-  <span class='kw'>directory</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>bucket</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>download_pdf</span>(<span class='no'>data</span>, <span class='kw'>links</span> <span class='kw'>=</span> <span class='st'>"link_pdf"</span>, <span class='kw'>fnames</span> <span class='kw'>=</span> <span class='st'>"id"</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>bucket</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,7 +137,7 @@ Papers are saved with their arXiv id, e.g. "2001.12345v1.pdf"</p>
       <td><p>name of column whose values should be used for saved file names. <code>id</code> by default.</p></td>
     </tr>
     <tr>
-      <th>directory</th>
+      <th>dir</th>
       <td><p>directory to download files to. Current working directory by default.</p></td>
     </tr>
     <tr>
@@ -158,14 +152,14 @@ Papers are saved with their arXiv id, e.g. "2001.12345v1.pdf"</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'># get paper metadata, then download it to working directory
-# ml &lt;- get_records("cs.LG", "20200801 TO 20200802", 1)
-# download_pdf(ml)
+#ml &lt;- get_records("cs.LG", "20200801 TO 20200802", 1)
+#download_pdf(ml)
 
 # set up S3 credentials, then download to bucket
-# Sys.setenv("AWS_ACCESS_KEY_ID" = "key")
-# Sys.setenv("AWS_SECRET_ACCESS_KEY" = "secretkey")
-# Sys.setenv("AWS_DEFAULT_REGION" = "us-east-2")
-# download_pdf(ml, bucket="mybucket")
+#Sys.setenv("AWS_ACCESS_KEY_ID" = "key")
+#Sys.setenv("AWS_SECRET_ACCESS_KEY" = "secretkey")
+#Sys.setenv("AWS_DEFAULT_REGION" = "us-east-2")
+#download_pdf(ml, bucket="mybucket")
 
 </div></pre>
   </div>

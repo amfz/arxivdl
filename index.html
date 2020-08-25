@@ -73,13 +73,31 @@
 <a href="#dlarxiv" class="anchor"></a>dlarxiv</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of dlarxiv is to make it easier to responsibly download papers from arXiv.</p>
+<p>The goal of <code>dlarxiv</code> is to make it easier to responsibly query and download papers from arXiv to disk or AWS S3 storage. This is particularly useful if you are trying to download several papers that match a specific query. <code>dlarxiv</code> also includes supporting functions to retrieve papers by subject area and submission date and to give files more meaningful names.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"amfz/dlarxiv"</span>)</pre></div>
+</div>
+<div id="usage" class="section level2">
+<h2 class="hasAnchor">
+<a href="#usage" class="anchor"></a>Usage</h2>
+<div id="basic-use" class="section level3">
+<h3 class="hasAnchor">
+<a href="#basic-use" class="anchor"></a>Basic Use</h3>
+<p>The main function is <code><a href="reference/download_pdf.html">download_pdf()</a></code>, which takes the results of an arXiv API query and downloads the full paper PDFs.</p>
+<pre><code><a href="https://rdrr.io/pkg/dlarxiv/man">library(dlarxiv)
+
+# see how many NE papers were submitted Jan 1, 2020 
+count &lt;- get_record_count("cs.NE", "20200101 TO 20200102")
+# get paper records
+papers &lt;- get_records("cs.NE", "20200101 TO 20200102", count)
+
+# download PDFs to the home directory with paper IDs as file names
+download_pdf(papers, dir="~/")</a></code></pre>
+</div>
 </div>
 </div>
   </div>

@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Download ArXiv Papers Responsibly • dlarxiv</title>
+<title>Download ArXiv Papers Responsibly • arxivdl</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -32,7 +32,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">dlarxiv</a>
+        <a class="navbar-link" href="index.html">arxivdl</a>
         <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
       </span>
     </div>
@@ -51,7 +51,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/amfz/dlarxiv/">
+  <a href="https://github.com/amfz/arxivdl/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -68,18 +68,18 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="dlarxiv" class="section level1">
+<div id="arxivdl" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#dlarxiv" class="anchor"></a>dlarxiv</h1></div>
+<a href="#arxivdl" class="anchor"></a>arxivdl</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of <code>dlarxiv</code> is to make it easier to responsibly query and download papers from arXiv to disk or AWS S3 storage. This is particularly useful if you are trying to download several papers that match a specific query. <code>dlarxiv</code> also includes supporting functions to retrieve papers by subject area and submission date and to give files more meaningful names.</p>
+<p>The goal of <code>arxivdl</code> is to make it easier to responsibly query and download papers from arXiv to disk or AWS S3 storage. This is particularly useful if you are trying to download several papers that match a specific query. <code>arxivdl</code> also includes supporting functions to retrieve papers by subject area and submission date and to give files more meaningful names.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"amfz/dlarxiv"</span>)</pre></div>
+<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"amfz/arxivdl"</span>)</pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -88,7 +88,7 @@
 <h3 class="hasAnchor">
 <a href="#basic-use" class="anchor"></a>Basic Use</h3>
 <p>The main function is <code><a href="reference/download_pdf.html">download_pdf()</a></code>, which takes the results of an arXiv API query and downloads the full paper PDFs.</p>
-<pre><code><a href="https://rdrr.io/pkg/dlarxiv/man">library(dlarxiv)
+<pre><code><a href="https://rdrr.io/pkg/arxivdl/man">library(arxivdl)
 
 # see how many NE papers were submitted Jan 1, 2020 
 count &lt;- get_record_count("cs.NE", "20200101 TO 20200102")
@@ -106,9 +106,9 @@ download_pdf(papers, dir="~/")</a></code></pre>
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/amfz/dlarxiv/">https://​github.com/​amfz/​dlarxiv/​</a>
+<li>Browse source code at <br><a href="https://github.com/amfz/arxivdl/">https://​github.com/​amfz/​arxivdl/​</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/amfz/dlarxiv/issues">https://​github.com/​amfz/​dlarxiv/​issues</a>
+<li>Report a bug at <br><a href="https://github.com/amfz/arxivdl/issues">https://​github.com/​amfz/​arxivdl/​issues</a>
 </li>
 </ul>
 </div>

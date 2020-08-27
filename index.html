@@ -48,6 +48,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/s3_setup.html">Setting Up AWS S3 Credentials</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -97,6 +109,26 @@ papers &lt;- get_records("cs.NE", "20200101 TO 20200102", count)
 
 # download PDFs to the home directory with paper IDs as file names
 download_pdf(papers, dir="~/")</a></code></pre>
+</div>
+<div id="saving-to-aws-s3" class="section level3">
+<h3 class="hasAnchor">
+<a href="#saving-to-aws-s3" class="anchor"></a>Saving to AWS S3</h3>
+<p><code><a href="reference/download_pdf.html">download_pdf()</a></code> also supports saving files to an Amazon Web Service S3 bucket. S3 access credentials should be set up before calling <code><a href="reference/download_pdf.html">download_pdf()</a></code>; the easiest way to do this is by setting them with <code><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv()</a></code>. See the [vignettename] for detailed instructions on setting up S3 storage and generating credentials.</p>
+<pre><code><a href="https://rdrr.io/r/base/Sys.setenv.html"># set up AWS credentials
+Sys.setenv(
+  "AWS_ACCESS_KEY_ID" = "your-key-here",
+  "AWS_SECRET_ACCESS_KEY" = "your-secret-here",
+  "AWS_DEFAULT_REGION" = "us-east-2" # replace region as appropriate
+)
+
+# get metadata for the first 20 graphics papers published in 2019
+papers &lt;- get_records("cs.GR","2019 TO 2020", lim = 20)
+
+# create file names based on paper titles
+papers$file_name &lt;- clean_titles(papers)
+
+# download files to s3 bucket
+download_pdf(papers, fname = "file_name", bucket = "my-s3-bucket")</a></code></pre>
 </div>
 </div>
 </div>

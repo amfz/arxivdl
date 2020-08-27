@@ -33,4 +33,25 @@ papers <- get_records("cs.NE", "20200101 TO 20200102", count)
 # download PDFs to the home directory with paper IDs as file names
 download_pdf(papers, dir="~/")
 ```
+### Saving to AWS S3
+
+`download_pdf()` also supports saving files to an Amazon Web Service S3 bucket. S3 access credentials should be set up before calling `download_pdf()`; the easiest way to do this is by setting them with `Sys.setenv()`. See the [vignettename] for detailed instructions on setting up S3 storage and generating credentials.
+
+```
+# set up AWS credentials
+Sys.setenv(
+  "AWS_ACCESS_KEY_ID" = "your-key-here",
+  "AWS_SECRET_ACCESS_KEY" = "your-secret-here",
+  "AWS_DEFAULT_REGION" = "us-east-2" # replace region as appropriate
+)
+
+# get metadata for the first 20 graphics papers published in 2019
+papers <- get_records("cs.GR","2019 TO 2020", lim = 20)
+
+# create file names based on paper titles
+papers$file_name <- clean_titles(papers)
+
+# download files to s3 bucket
+download_pdf(papers, fname = "file_name", bucket = "my-s3-bucket")
+```
 

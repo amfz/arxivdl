@@ -163,17 +163,17 @@ Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf"</p>
     <p>None -- files are saved to the specified location</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># get paper metadata, then download it to working directory
-#ml &lt;- get_records("cs.LG", "20200801 TO 20200802", 1)
-#download_pdf(ml)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'># get paper metadata, then download it to working directory</span>
+<span class='no'>ml</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_records.html'>get_records</a></span>(<span class='st'>"cs.LG"</span>, <span class='st'>"20200801 TO 20200802"</span>, <span class='fl'>1</span>)
+<span class='fu'>download_pdf</span>(<span class='no'>ml</span>)
 
-# set up S3 credentials, then download to bucket
-#Sys.setenv("AWS_ACCESS_KEY_ID" = "key")
-#Sys.setenv("AWS_SECRET_ACCESS_KEY" = "secretkey")
-#Sys.setenv("AWS_DEFAULT_REGION" = "us-east-2")
-#download_pdf(ml, bucket="mybucket")
-
-</div></pre>
+<span class='co'># set up S3 credentials, then download to bucket</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv</a></span>(<span class='st'>"AWS_ACCESS_KEY_ID"</span> <span class='kw'>=</span> <span class='st'>"key"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv</a></span>(<span class='st'>"AWS_SECRET_ACCESS_KEY"</span> <span class='kw'>=</span> <span class='st'>"secretkey"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv</a></span>(<span class='st'>"AWS_DEFAULT_REGION"</span> <span class='kw'>=</span> <span class='st'>"us-east-2"</span>)
+<span class='fu'>download_pdf</span>(<span class='no'>ml</span>, <span class='kw'>bucket</span><span class='kw'>=</span><span class='st'>"mybucket"</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

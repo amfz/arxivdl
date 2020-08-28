@@ -9,7 +9,7 @@ clean_titles(data, col = "title")
 \arguments{
 \item{data}{data frame}
 
-\item{col}{text column in the data frame to clean up}
+\item{col}{text column in the data frame to clean up. "title" by default.}
 }
 \value{
 Character vector of cleaned text.

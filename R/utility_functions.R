@@ -3,7 +3,7 @@
 #' Clean up text for use as file names. Converts all characters to lowercase, removes  punctuation and extra whitespace, replaces spaces between words with underscores, and adds ".pdf" to the end of the title.
 #'
 #' @param data data frame
-#' @param col text column in the data frame to clean up
+#' @param col text column in the data frame to clean up. "title" by default.
 #'
 #' @return Character vector of cleaned text.
 #'
@@ -20,6 +20,8 @@ clean_titles <- function(data, col = "title") {
   cleaned <- gsub("[[:punct:]]", " ", cleaned)
   # reduce multiple whitespace chars to one
   cleaned <- gsub("[[:space:]]{2,}", " ", cleaned)
+  # trim whitespace
+  cleaned <- trimws(cleaned)
   # replace spaces with underscores
   cleaned <- gsub("[[:space:]]", "_", cleaned)
   cleaned <- paste0(cleaned, ".pdf")

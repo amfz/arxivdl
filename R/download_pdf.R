@@ -12,15 +12,17 @@
 #' @return None -- files are saved to the specified location
 #'
 #' @examples
+#' \dontrun{
 #' # get paper metadata, then download it to working directory
-#' #ml <- get_records("cs.LG", "20200801 TO 20200802", 1)
-#' #download_pdf(ml)
+#' ml <- get_records("cs.LG", "20200801 TO 20200802", 1)
+#' download_pdf(ml)
 #'
 #' # set up S3 credentials, then download to bucket
-#' #Sys.setenv("AWS_ACCESS_KEY_ID" = "key")
-#' #Sys.setenv("AWS_SECRET_ACCESS_KEY" = "secretkey")
-#' #Sys.setenv("AWS_DEFAULT_REGION" = "us-east-2")
-#' #download_pdf(ml, bucket="mybucket")
+#' Sys.setenv("AWS_ACCESS_KEY_ID" = "key")
+#' Sys.setenv("AWS_SECRET_ACCESS_KEY" = "secretkey")
+#' Sys.setenv("AWS_DEFAULT_REGION" = "us-east-2")
+#' download_pdf(ml, bucket="mybucket")
+#' }
 #'
 #' @export
 download_pdf <- function(data, links = "link_pdf", fnames = "id", dir = ".", bucket = NULL) {
@@ -54,6 +56,11 @@ download_pdf <- function(data, links = "link_pdf", fnames = "id", dir = ".", buc
       }
       if(nchar(Sys.getenv("AWS_DEFAULT_REGION")) < 2) {
         warning('AWS_DEFAULT_REGION environment variable not set. Use Sys.setenv("AWS_DEFAULT_REGION" = "aws-region-name") to set the region.')
+      }
+
+      # check that the bucket is accessible with given credentials
+      if (!aws.s3::bucket_exists(bucket)) {
+        stop(paste0("Could not access ", bucket, ". Check bucket name and/or credentials."))
       }
       # write to s3 bucket
       aws.s3::s3write_using(url,

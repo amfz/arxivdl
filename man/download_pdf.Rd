@@ -25,14 +25,16 @@ Takes the results of an arxiv API query and downloads papers to disk by default.
 Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf"
 }
 \examples{
+\dontrun{
 # get paper metadata, then download it to working directory
-#ml <- get_records("cs.LG", "20200801 TO 20200802", 1)
-#download_pdf(ml)
+ml <- get_records("cs.LG", "20200801 TO 20200802", 1)
+download_pdf(ml)
 
 # set up S3 credentials, then download to bucket
-#Sys.setenv("AWS_ACCESS_KEY_ID" = "key")
-#Sys.setenv("AWS_SECRET_ACCESS_KEY" = "secretkey")
-#Sys.setenv("AWS_DEFAULT_REGION" = "us-east-2")
-#download_pdf(ml, bucket="mybucket")
+Sys.setenv("AWS_ACCESS_KEY_ID" = "key")
+Sys.setenv("AWS_SECRET_ACCESS_KEY" = "secretkey")
+Sys.setenv("AWS_DEFAULT_REGION" = "us-east-2")
+download_pdf(ml, bucket="mybucket")
+}
 
 }

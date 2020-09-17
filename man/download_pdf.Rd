@@ -4,7 +4,14 @@
 \alias{download_pdf}
 \title{Download PDFs}
 \usage{
-download_pdf(data, links = "link_pdf", fnames = "id", dir = ".", bucket = NULL)
+download_pdf(
+  data,
+  links = "link_pdf",
+  fnames = "id",
+  dir = ".",
+  bucket = NULL,
+  delay = 5
+)
 }
 \arguments{
 \item{data}{data frame of arXiv records.}
@@ -16,13 +23,16 @@ download_pdf(data, links = "link_pdf", fnames = "id", dir = ".", bucket = NULL)
 \item{dir}{directory to download files to. Current working directory by default.}
 
 \item{bucket}{name of AWS S3 bucket to save files to.}
+
+\item{delay}{number of seconds to wait between paper downloads. Default (and minimum) is 5.}
 }
 \value{
 None -- files are saved to the specified location
 }
 \description{
 Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials should be set as environment variables prior to using \code{download_pdf} (see example).
-Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf"
+Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf".
+This function imposes a minimum five-second delay between PDF downlaods to avoid abusing shared web resources.
 }
 \examples{
 \dontrun{

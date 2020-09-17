@@ -1,13 +1,15 @@
 #' Download PDFs
 #'
 #' Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials should be set as environment variables prior to using `download_pdf` (see example).
-#' Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf"
+#' Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf".
+#' This function imposes a minimum five-second delay between PDF downlaods to avoid abusing shared web resources.
 #'
 #' @param data data frame of arXiv records.
 #' @param links name of column containing the PDF locations. `link_pdf` by default.
 #' @param fnames name of column whose values should be used for saved file names. `id` by default.
 #' @param dir directory to download files to. Current working directory by default.
 #' @param bucket name of AWS S3 bucket to save files to.
+#' @param delay number of seconds to wait between paper downloads. Default (and minimum) is 5.
 #'
 #' @return None -- files are saved to the specified location
 #'
@@ -25,7 +27,10 @@
 #' }
 #'
 #' @export
-download_pdf <- function(data, links = "link_pdf", fnames = "id", dir = ".", bucket = NULL) {
+download_pdf <- function(data, links = "link_pdf", fnames = "id", dir = ".", bucket = NULL, delay = 5) {
+  if (delay < 5) {
+    stop("delay must be equal to or larger than 5.")
+  }
   for (i in 1:nrow(data)) {
     # make sure the link ends with ".pdf"
     if (!endsWith(data[i, links], ".pdf")) {
@@ -70,6 +75,6 @@ download_pdf <- function(data, links = "link_pdf", fnames = "id", dir = ".", buc
                             object = file_name)
     }
     # pause before downloading the next paper
-    Sys.sleep(5)
+    Sys.sleep(delay)
   }
 }

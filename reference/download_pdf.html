@@ -41,7 +41,8 @@
 
 <meta property="og:title" content="Download PDFs — download_pdf" />
 <meta property="og:description" content="Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials should be set as environment variables prior to using download_pdf (see example).
-Papers are saved with their arXiv id by default, e.g. &quot;2001.12345v1.pdf&quot;" />
+Papers are saved with their arXiv id by default, e.g. &quot;2001.12345v1.pdf&quot;.
+This function imposes a minimum five-second delay between PDF downlaods to avoid abusing shared web resources." />
 
 
 
@@ -128,10 +129,18 @@ Papers are saved with their arXiv id by default, e.g. &quot;2001.12345v1.pdf&quo
 
     <div class="ref-description">
     <p>Takes the results of an arxiv API query and downloads papers to disk by default. Saving to an AWS S3 bucket is also supported, though credentials should be set as environment variables prior to using <code>download_pdf</code> (see example).
-Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf"</p>
+Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf".
+This function imposes a minimum five-second delay between PDF downlaods to avoid abusing shared web resources.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>download_pdf</span>(<span class='no'>data</span>, <span class='kw'>links</span> <span class='kw'>=</span> <span class='st'>"link_pdf"</span>, <span class='kw'>fnames</span> <span class='kw'>=</span> <span class='st'>"id"</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>bucket</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>download_pdf</span>(
+  <span class='kw'>data</span>,
+  links = <span class='st'>"link_pdf"</span>,
+  fnames = <span class='st'>"id"</span>,
+  dir = <span class='st'>"."</span>,
+  bucket = <span class='kw'>NULL</span>,
+  delay = <span class='fl'>5</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,6 +165,10 @@ Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf"</p>
       <th>bucket</th>
       <td><p>name of AWS S3 bucket to save files to.</p></td>
     </tr>
+    <tr>
+      <th>delay</th>
+      <td><p>number of seconds to wait between paper downloads. Default (and minimum) is 5.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -163,17 +176,19 @@ Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf"</p>
     <p>None -- files are saved to the specified location</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># get paper metadata, then download it to working directory</span>
-<span class='no'>ml</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_records.html'>get_records</a></span>(<span class='st'>"cs.LG"</span>, <span class='st'>"20200801 TO 20200802"</span>, <span class='fl'>1</span>)
-<span class='fu'>download_pdf</span>(<span class='no'>ml</span>)
+<span class='kw'>ml</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_records.html'>get_records</a></span>(<span class='st'>"cs.LG"</span>, <span class='st'>"20200801 TO 20200802"</span>, <span class='fl'>1</span>)
+<span class='fu'>download_pdf</span>(<span class='kw'>ml</span>)
 
 <span class='co'># set up S3 credentials, then download to bucket</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv</a></span>(<span class='st'>"AWS_ACCESS_KEY_ID"</span> <span class='kw'>=</span> <span class='st'>"key"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv</a></span>(<span class='st'>"AWS_SECRET_ACCESS_KEY"</span> <span class='kw'>=</span> <span class='st'>"secretkey"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv</a></span>(<span class='st'>"AWS_DEFAULT_REGION"</span> <span class='kw'>=</span> <span class='st'>"us-east-2"</span>)
-<span class='fu'>download_pdf</span>(<span class='no'>ml</span>, <span class='kw'>bucket</span><span class='kw'>=</span><span class='st'>"mybucket"</span>)
-}</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv</a></span>(<span class='st'>"AWS_ACCESS_KEY_ID"</span> = <span class='st'>"key"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv</a></span>(<span class='st'>"AWS_SECRET_ACCESS_KEY"</span> = <span class='st'>"secretkey"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv</a></span>(<span class='st'>"AWS_DEFAULT_REGION"</span> = <span class='st'>"us-east-2"</span>)
+<span class='fu'>download_pdf</span>(<span class='kw'>ml</span>, bucket=<span class='st'>"mybucket"</span>)
+}
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -189,7 +204,7 @@ Papers are saved with their arXiv id by default, e.g. "2001.12345v1.pdf"</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -90,8 +90,10 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"amfz/arxivdl"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co"># install.packages("devtools")</span>
+<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"amfz/arxivdl"</span>)
+</pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -100,7 +102,7 @@
 <h3 class="hasAnchor">
 <a href="#basic-use" class="anchor"></a>Basic Use</h3>
 <p>The main function is <code><a href="reference/download_pdf.html">download_pdf()</a></code>, which takes the results of an arXiv API query and downloads the full paper PDFs.</p>
-<pre><code><a href="https://rdrr.io/pkg/arxivdl/man">library(arxivdl)
+<pre><code><a href="https://github.com/amfz/arxivdl">library(arxivdl)
 
 # see how many NE papers were submitted Jan 1, 2020 
 count &lt;- get_record_count("cs.NE", "20200101 TO 20200102")
@@ -168,7 +170,7 @@ download_pdf(papers, fname = "file_name", bucket = "my-s3-bucket")</a></code></p
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
